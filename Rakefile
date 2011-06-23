@@ -1,14 +1,13 @@
 require 'rubygems'
+require 'rspec/core/rake_task'
 require 'rake'
 
 task :default => :test
 
-desc "Run specs and cukes"
-task :test => [:rspec, :cucumber]
+RSpec::Core::RakeTask.new
 
-task :rspec do
-  sh 'rspec spec/ --color --format doc'
-end
+desc "Run specs and cukes"
+task :test => [:spec, :cucumber]
 
 task :cucumber do
   sh 'cucumber'
